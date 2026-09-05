@@ -63,9 +63,11 @@ export default function Hero() {
             Solicitar orçamento
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </a>
-          <a href="/#portfolio" className="w-full sm:w-auto px-8 py-4 rounded-full bg-white/80 backdrop-blur-md text-crono-dark font-medium border border-gray-200/60 hover:bg-white hover:border-gray-300 transition-all hover:scale-105 active:scale-95 flex items-center justify-center shadow-sm text-[15px] md:text-base">
+          <button onClick={() => {
+            document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' });
+          }} className="w-full sm:w-auto px-8 py-4 rounded-full bg-white/80 backdrop-blur-md text-crono-dark font-medium border border-gray-200/60 hover:bg-white hover:border-gray-300 transition-all hover:scale-105 active:scale-95 flex items-center justify-center shadow-sm text-[15px] md:text-base">
             Ver projetos
-          </a>
+          </button>
         </motion.div>
       </div>
 

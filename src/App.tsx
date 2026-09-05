@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -14,7 +14,7 @@ import Terms from "./pages/Terms";
 export default function App() {
   return (
     <HelmetProvider>
-      <BrowserRouter>
+      <HashRouter>
         <div className="bg-crono-bg min-h-screen text-crono-text font-sans antialiased selection:bg-crono-accent/20 selection:text-crono-dark flex flex-col">
           <Header />
           <div className="flex-grow">
@@ -22,11 +22,12 @@ export default function App() {
               <Route path="/" element={<Home />} />
               <Route path="/privacidade" element={<Privacy />} />
               <Route path="/termos" element={<Terms />} />
+              <Route path="*" element={<Home />} />
             </Routes>
           </div>
           <Footer />
         </div>
-      </BrowserRouter>
+      </HashRouter>
     </HelmetProvider>
   );
 }

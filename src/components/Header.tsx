@@ -2,11 +2,25 @@ import { motion, AnimatePresence } from "motion/react";
 import { Menu, X, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
 import { cn } from "@/src/lib/utils";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { getWhatsAppLink } from "@/src/config/site";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const scrollTo = (id: string) => {
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsOpen(false);
+  };
 
   // Prevent background scroll when mobile menu is open
   useEffect(() => {
@@ -28,10 +42,10 @@ export default function Header() {
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
-          <a href="/#services" className="hover:text-crono-dark transition-colors">Serviços</a>
-          <a href="/#portfolio" className="hover:text-crono-dark transition-colors">Projetos</a>
-          <a href="/#process" className="hover:text-crono-dark transition-colors">Processo</a>
-          <a href="/#solutions" className="hover:text-crono-dark transition-colors">Soluções</a>
+          <button onClick={() => scrollTo('services')} className="hover:text-crono-dark transition-colors">Serviços</button>
+          <button onClick={() => scrollTo('portfolio')} className="hover:text-crono-dark transition-colors">Projetos</button>
+          <button onClick={() => scrollTo('process')} className="hover:text-crono-dark transition-colors">Processo</button>
+          <button onClick={() => scrollTo('solutions')} className="hover:text-crono-dark transition-colors">Soluções</button>
         </nav>
 
         <div className="hidden md:flex">
@@ -57,18 +71,18 @@ export default function Header() {
             className="absolute top-[64px] left-0 w-full h-[calc(100vh-64px)] glass border-b shadow-2xl md:hidden overflow-y-auto flex flex-col z-40 bg-white/95 backdrop-blur-xl"
           >
             <div className="flex flex-col p-6 gap-2 flex-grow">
-              <a href="/#services" onClick={() => setIsOpen(false)} className="text-xl font-medium text-crono-dark py-4 border-b border-gray-100 flex items-center justify-between group active:bg-gray-50 rounded-lg px-2 -mx-2 transition-colors">
+              <button onClick={() => scrollTo('services')} className="text-xl font-medium text-crono-dark py-4 border-b border-gray-100 flex items-center justify-between group active:bg-gray-50 rounded-lg px-2 -mx-2 transition-colors">
                 Serviços <ChevronRight className="w-5 h-5 text-gray-300 group-active:text-crono-dark group-active:translate-x-1 transition-all"/>
-              </a>
-              <a href="/#portfolio" onClick={() => setIsOpen(false)} className="text-xl font-medium text-crono-dark py-4 border-b border-gray-100 flex items-center justify-between group active:bg-gray-50 rounded-lg px-2 -mx-2 transition-colors">
+              </button>
+              <button onClick={() => scrollTo('portfolio')} className="text-xl font-medium text-crono-dark py-4 border-b border-gray-100 flex items-center justify-between group active:bg-gray-50 rounded-lg px-2 -mx-2 transition-colors">
                 Projetos <ChevronRight className="w-5 h-5 text-gray-300 group-active:text-crono-dark group-active:translate-x-1 transition-all"/>
-              </a>
-              <a href="/#process" onClick={() => setIsOpen(false)} className="text-xl font-medium text-crono-dark py-4 border-b border-gray-100 flex items-center justify-between group active:bg-gray-50 rounded-lg px-2 -mx-2 transition-colors">
+              </button>
+              <button onClick={() => scrollTo('process')} className="text-xl font-medium text-crono-dark py-4 border-b border-gray-100 flex items-center justify-between group active:bg-gray-50 rounded-lg px-2 -mx-2 transition-colors">
                 Processo <ChevronRight className="w-5 h-5 text-gray-300 group-active:text-crono-dark group-active:translate-x-1 transition-all"/>
-              </a>
-              <a href="/#solutions" onClick={() => setIsOpen(false)} className="text-xl font-medium text-crono-dark py-4 border-b border-gray-100 flex items-center justify-between group active:bg-gray-50 rounded-lg px-2 -mx-2 transition-colors">
+              </button>
+              <button onClick={() => scrollTo('solutions')} className="text-xl font-medium text-crono-dark py-4 border-b border-gray-100 flex items-center justify-between group active:bg-gray-50 rounded-lg px-2 -mx-2 transition-colors">
                 Soluções <ChevronRight className="w-5 h-5 text-gray-300 group-active:text-crono-dark group-active:translate-x-1 transition-all"/>
-              </a>
+              </button>
               
               <div className="mt-8 pt-4 pb-12">
                 <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)} className="w-full text-center px-5 py-4 rounded-full bg-crono-dark text-white text-[17px] font-medium block active:scale-[0.98] transition-transform">
