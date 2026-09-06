@@ -6,7 +6,7 @@ import {defineConfig} from 'vite';
 export default defineConfig(() => {
   return {
     // Definimos explicitamente o nome do repositório como base para evitar erro de assets no GitHub Pages
-    base: '/CronoSite/',
+    base: '/CronoSites/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
