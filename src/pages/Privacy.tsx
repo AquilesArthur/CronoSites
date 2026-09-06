@@ -4,17 +4,17 @@ export default function Privacy() {
   return (
     <main className="pt-32 pb-24 bg-white min-h-screen">
       <Helmet>
-        <title>Política de Privacidade | Crono Sites</title>
-        <meta name="description" content="Leia nossa Política de Privacidade para entender como a Crono Sites coleta, utiliza e protege as suas informações e dados pessoais." />
-        <meta property="og:title" content="Política de Privacidade | Crono Sites" />
-        <meta property="og:description" content="Leia nossa Política de Privacidade para entender como a Crono Sites coleta, utiliza e protege as suas informações e dados pessoais." />
+        <title>Política de Privacidade | CronoSite</title>
+        <meta name="description" content="Leia nossa Política de Privacidade para entender como a CronoSite coleta, utiliza e protege as suas informações e dados pessoais." />
+        <meta property="og:title" content="Política de Privacidade | CronoSite" />
+        <meta property="og:description" content="Leia nossa Política de Privacidade para entender como a CronoSite coleta, utiliza e protege as suas informações e dados pessoais." />
         <meta property="og:type" content="website" />
       </Helmet>
       <div className="container mx-auto px-6 max-w-4xl">
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-crono-dark mb-8">Política de Privacidade</h1>
         <div className="prose prose-gray max-w-none text-gray-600 font-light leading-relaxed space-y-6">
           <p>
-            Na <strong>Crono Sites</strong>, privacidade e segurança são prioridades e nos comprometemos com a transparência do tratamento de dados pessoais dos nossos usuários/clientes. Por isso, a presente Política de Privacidade estabelece como é feita a coleta, uso e transferência de informações de clientes ou outras pessoas que acessam ou usam nosso site.
+            Na <strong>CronoSite</strong>, privacidade e segurança são prioridades e nos comprometemos com a transparência do tratamento de dados pessoais dos nossos usuários/clientes. Por isso, a presente Política de Privacidade estabelece como é feita a coleta, uso e transferência de informações de clientes ou outras pessoas que acessam ou usam nosso site.
           </p>
           <h2 className="text-2xl font-semibold text-crono-dark pt-4">1. Quais dados coletamos sobre você e para qual finalidade?</h2>
           <p>
@@ -37,7 +37,7 @@ export default function Privacy() {
 
           <h2 className="text-2xl font-semibold text-crono-dark pt-4">3. Consentimento</h2>
           <p>
-            É a partir do seu consentimento que tratamos os seus dados pessoais. O consentimento é a manifestação livre, informada e inequívoca pela qual você autoriza a Crono Sites a tratar seus dados. Ao utilizar os nossos serviços e fornecer seus dados pessoais, você está ciente e consentindo com as disposições desta Política de Privacidade.
+            É a partir do seu consentimento que tratamos os seus dados pessoais. O consentimento é a manifestação livre, informada e inequívoca pela qual você autoriza a CronoSite a tratar seus dados. Ao utilizar os nossos serviços e fornecer seus dados pessoais, você está ciente e consentindo com as disposições desta Política de Privacidade.
           </p>
 
           <h2 className="text-2xl font-semibold text-crono-dark pt-4">4. Com quem compartilhamos os seus dados?</h2>

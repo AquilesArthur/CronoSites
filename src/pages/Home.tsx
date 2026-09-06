@@ -12,10 +12,10 @@ export default function Home() {
   return (
     <main>
       <Helmet>
-        <title>Crono Sites | Criação de Sites Profissionais e Landing Pages</title>
-        <meta name="description" content="A Crono Sites desenvolve landing pages e sites institucionais de alta conversão, com design moderno, alta performance e SEO otimizado para o seu negócio." />
-        <meta property="og:title" content="Crono Sites | Criação de Sites Profissionais" />
-        <meta property="og:description" content="A Crono Sites desenvolve landing pages e sites institucionais de alta conversão, com design moderno, alta performance e SEO otimizado." />
+        <title>CronoSite | Criação de Sites Profissionais e Landing Pages</title>
+        <meta name="description" content="A CronoSite desenvolve landing pages e sites institucionais de alta conversão, com design moderno, alta performance e SEO otimizado para o seu negócio." />
+        <meta property="og:title" content="CronoSite | Criação de Sites Profissionais" />
+        <meta property="og:description" content="A CronoSite desenvolve landing pages e sites institucionais de alta conversão, com design moderno, alta performance e SEO otimizado." />
         <meta property="og:type" content="website" />
       </Helmet>
       <Hero />
