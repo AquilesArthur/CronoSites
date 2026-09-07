@@ -70,23 +70,24 @@ export default function ParticleBackground() {
       if (p.shape === 'circle') {
         ctx.arc(0, 0, r, 0, Math.PI * 2);
       } else if (p.shape === 'square') {
-        // Expand square width slightly so its edges (not just corners) push closer to the collision boundary
-        const w = r * 0.95; 
+        // Balance inradius and circumradius to minimize average collision error
+        const w = r * 0.83; 
         if (ctx.roundRect) {
-          ctx.roundRect(-w, -w, w * 2, w * 2, w * 0.25); // Slightly rounded corners, sharp edges
+          ctx.roundRect(-w, -w, w * 2, w * 2, w * 0.25);
         } else {
           ctx.rect(-w, -w, w * 2, w * 2);
         }
       } else if (p.shape === 'triangle') {
-        // Expand triangle visually so its flat edges sit perfectly on the collision boundary
-        const tr = r * 1.15; 
-        const bottomY = r * 0.75;
-        const rightX = r * 1.05;
+        // Balance inradius and circumradius (tr = r * 1.33)
+        const tr = r * 1.33; 
+        const bottomY = tr * 0.5;
+        const rightX = tr * 0.866;
         ctx.moveTo(0, -tr);
         ctx.lineTo(rightX, bottomY);
         ctx.lineTo(-rightX, bottomY);
       } else if (p.shape === 'hexagon') {
-        const hr = r * 1.05;
+        // Balance inradius and circumradius (hr = r * 1.07)
+        const hr = r * 1.07;
         for (let i = 0; i < 6; i++) {
           const angle = (Math.PI / 3) * i;
           const hx = Math.cos(angle) * hr;
@@ -124,12 +125,21 @@ export default function ParticleBackground() {
           let minDist = p1.radius + p2.radius; // Exact hitbox distance
 
           if (dist < minDist && dist !== 0) {
-            // Push them apart gently
-            let angle = Math.atan2(dy, dx);
-            let tx = p1.x + Math.cos(angle) * minDist;
-            let ty = p1.y + Math.sin(angle) * minDist;
-            let ax = (tx - p2.x) * 0.02; // Spring force
-            let ay = (ty - p2.y) * 0.02;
+            // Rigid body immediate separation to prevent visual clipping
+            let overlap = minDist - dist;
+            let nx = dx / dist;
+            let ny = dy / dist;
+            
+            // Resolve overlap directly in position
+            p1.x -= nx * (overlap / 2);
+            p1.y -= ny * (overlap / 2);
+            p2.x += nx * (overlap / 2);
+            p2.y += ny * (overlap / 2);
+
+            // Apply a strong bounce force based on the overlap
+            let spring = 0.5; 
+            let ax = nx * overlap * spring;
+            let ay = ny * overlap * spring;
             
             p1.vx -= ax;
             p1.vy -= ay;

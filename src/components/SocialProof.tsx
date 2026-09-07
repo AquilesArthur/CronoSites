@@ -10,7 +10,7 @@ const benefits = [
 
 export default function SocialProof() {
   return (
-    <section className="py-24 bg-white border-y border-gray-100 overflow-hidden">
+    <section className="py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-6 max-w-7xl">
         <motion.p 
           initial={{ opacity: 0, y: 20 }}

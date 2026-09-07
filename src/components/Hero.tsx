@@ -9,7 +9,7 @@ export default function Hero() {
       {/* Geometric Tech Background */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden flex items-center justify-center">
         {/* Tech Grid Overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]"></div>
         
         {/* Animated Geometric Particles Canvas (Random sizes, collisions, different movements) */}
         <ParticleBackground />
