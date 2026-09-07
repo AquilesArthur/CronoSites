@@ -32,9 +32,8 @@ export default function Header() {
   }, [isOpen]);
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 transition-all duration-300">
-      <div className="absolute inset-0 glass border-b border-white/20"></div>
-      <div className="container mx-auto px-6 h-16 md:h-20 flex items-center justify-between relative relative z-10 max-w-7xl">
+    <header className="fixed top-0 inset-x-0 z-50 bg-white border-b border-gray-100 transition-all duration-300">
+      <div className="container mx-auto px-6 h-16 md:h-20 flex items-center justify-between relative z-10 max-w-7xl">
         <Link to="/" className="text-xl md:text-2xl font-bold tracking-tight text-crono-dark flex items-center gap-2">
           <div className="w-7 h-7 md:w-8 md:h-8 rounded-[0.4rem] md:rounded-lg bg-crono-dark text-crono-light flex items-center justify-center font-bold text-sm md:text-base">C</div>
           Crono
@@ -68,7 +67,7 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="absolute top-[64px] left-0 w-full h-[calc(100vh-64px)] glass border-b shadow-2xl md:hidden overflow-y-auto flex flex-col z-40 bg-white/95 backdrop-blur-xl"
+            className="absolute top-[64px] left-0 w-full h-[calc(100vh-64px)] bg-white border-b shadow-2xl md:hidden overflow-y-auto flex flex-col z-40"
           >
             <div className="flex flex-col p-6 gap-2 flex-grow">
               <button onClick={() => scrollTo('services')} className="text-xl font-medium text-crono-dark py-4 border-b border-gray-100 flex items-center justify-between group active:bg-gray-50 rounded-lg px-2 -mx-2 transition-colors">
