@@ -34,7 +34,7 @@ export default function Header() {
   return (
     <header className="fixed top-0 inset-x-0 z-50 bg-white border-b border-gray-100 transition-all duration-300">
       <div className="container mx-auto px-6 h-16 md:h-20 flex items-center justify-between relative z-10 max-w-7xl">
-        <Link to="/" className="text-xl md:text-2xl font-bold tracking-tight text-crono-dark flex items-center gap-2">
+        <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="text-xl md:text-2xl font-bold tracking-tight text-crono-dark flex items-center gap-2">
           <div className="w-7 h-7 md:w-8 md:h-8 rounded-[0.4rem] md:rounded-lg bg-crono-dark text-crono-light flex items-center justify-center font-bold text-sm md:text-base">C</div>
           Crono
         </Link>
