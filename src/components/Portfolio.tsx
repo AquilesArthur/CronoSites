@@ -54,19 +54,19 @@ export default function Portfolio() {
               transition={{ delay: idx * 0.1, duration: 0.6 }}
               className={`${project.bgColor} ${project.colSpan} rounded-[1.5rem] md:rounded-[2rem] p-6 sm:p-8 md:p-12 min-h-[320px] md:min-h-[450px] flex flex-col justify-between group overflow-hidden relative border border-black/5 hover:border-black/10 transition-colors cursor-pointer block`}
             >
-              <div className="relative z-20 flex justify-between items-start">
+              <div className="relative z-30 flex justify-between items-start">
                 <span className={`text-[11px] sm:text-xs md:text-sm font-semibold tracking-widest uppercase ${project.textColor}`}>
                   {project.category}
                 </span>
-                <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-black/5 backdrop-blur-md flex items-center justify-center md:opacity-0 group-hover:opacity-100 transform md:translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-black/10 backdrop-blur-md flex items-center justify-center md:opacity-0 group-hover:opacity-100 transform md:translate-y-4 group-hover:translate-y-0 transition-all duration-300">
                   <Maximize2 className={`w-4 h-4 md:w-5 md:h-5 ${project.titleColor}`} />
                 </div>
               </div>
               
-              <div className="relative z-20 max-w-[85%] sm:max-w-[70%]">
+              <div className="relative z-30 max-w-[85%] sm:max-w-[70%]">
                 <h3 className={`text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight ${project.titleColor} mb-2`}>
                   {project.style.split('&')[0]} <br className="hidden md:block"/>
-                  <span className="opacity-60">& {project.style.split('&')[1]}</span>
+                  <span className="opacity-80">& {project.style.split('&')[1]}</span>
                 </h3>
               </div>
               

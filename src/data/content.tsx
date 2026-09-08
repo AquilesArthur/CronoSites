@@ -111,55 +111,24 @@ export const portfolioData = [
     )
   },
   {
-    category: "Clínicas & Saúde",
-    style: "Clean & Confiança",
-    bgColor: "bg-[#f2f7ff]",
-    textColor: "text-blue-500",
-    titleColor: "text-blue-950",
-    colSpan: "lg:col-span-1",
-    accent: "bg-white",
-    element: (
-      <div className="absolute -right-4 -bottom-4 w-[70%] h-[70%] rounded-2xl bg-white shadow-[0_20px_40px_rgba(0,0,0,0.05)] p-4 sm:p-6 group-hover:scale-105 transition-transform duration-700 flex flex-col gap-3 sm:gap-4 border border-blue-100/50">
-        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-blue-50/80 flex items-center justify-center text-blue-500 mb-1 sm:mb-2">
-          <Sparkles className="w-3 h-3 sm:w-4 sm:h-4" />
-        </div>
-        <div className="h-2 sm:h-3 w-1/2 bg-blue-100/50 rounded-full" />
-        <div className="h-2 sm:h-3 w-2/3 bg-blue-50/50 rounded-full" />
-      </div>
-    )
-  },
-  {
-    category: "Gastronomia",
+    category: "Alimentos",
+    link: "https://aquilesarthur.github.io/Brasa-e-Massa/",
     style: "Sabor & Sofisticação",
-    bgColor: "bg-[#fff8f3]",
-    textColor: "text-orange-600/60",
-    titleColor: "text-orange-950",
+    bgColor: "bg-orange-950 overflow-hidden group",
+    textColor: "text-orange-100",
+    titleColor: "text-white",
     colSpan: "lg:col-span-1",
     accent: "bg-white",
     element: (
-      <div className="absolute right-4 bottom-4 sm:right-8 sm:bottom-8 w-32 h-32 sm:w-40 sm:h-40 group-hover:scale-150 transition-all duration-700 pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(254,215,170,0.5) 0%, rgba(254,215,170,0) 70%)' }} />
-    )
-  },
-  {
-    category: "Tecnologia & Startups",
-    style: "Inovação & Fluxo",
-    bgColor: "bg-[#0A0A0A]",
-    textColor: "text-indigo-400",
-    titleColor: "text-white",
-    colSpan: "lg:col-span-2",
-    accent: "bg-[#111]",
-    element: (
-      <div className="absolute right-0 bottom-0 w-[85%] h-[60%] sm:w-3/4 sm:h-3/4 overflow-hidden rounded-tl-2xl sm:rounded-tl-3xl border-t border-l border-white/5 bg-gradient-to-br from-indigo-500/10 to-transparent p-4 sm:p-8 flex gap-4 group-hover:-translate-y-2 transition-transform duration-700">
-        {/* Mock dashboard panels */}
-        <div className="flex-1 rounded-xl bg-white/5 border border-white/5 p-3 sm:p-4 flex flex-col gap-2 sm:gap-3">
-          <div className="w-full h-16 sm:h-24 rounded-lg bg-gradient-to-t from-indigo-500/20 to-transparent border-b-2 border-indigo-500/50" />
-          <div className="flex gap-2">
-            <div className="h-6 sm:h-8 flex-1 rounded-md bg-white/5" />
-            <div className="h-6 sm:h-8 flex-1 rounded-md bg-white/5" />
-          </div>
-        </div>
-        <div className="w-1/4 sm:w-1/3 rounded-xl bg-white/5 border border-white/5 p-4" />
-      </div>
+      <>
+        {/* Background Image Container */}
+        <div 
+          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000 group-hover:scale-110 opacity-70"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&q=80&w=1200')" }}
+        />
+        {/* Gradient Overlay to ensure text readability (dark bottom/left, transparent top/right) */}
+        <div className="absolute inset-0 z-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+      </>
     )
   }
 ];
