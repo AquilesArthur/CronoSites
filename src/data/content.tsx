@@ -93,21 +93,21 @@ export const portfolioData = [
     category: "Escritórios & Advocacia",
     link: "https://aquilesadvocacia.com/",
     style: "Luxo & Autoridade",
-    bgColor: "bg-zinc-900",
-    textColor: "text-zinc-400",
+    bgColor: "bg-zinc-950 overflow-hidden group",
+    textColor: "text-zinc-300",
     titleColor: "text-white",
     colSpan: "lg:col-span-2",
     accent: "bg-zinc-800",
     element: (
-      <div className="absolute right-0 bottom-0 translate-x-1/4 translate-y-1/4 w-[75%] h-[70%] sm:w-[60%] sm:h-[80%] rounded-tl-[40px] bg-zinc-800/80 border-t border-l border-zinc-700/50 backdrop-blur-xl p-6 sm:p-8 flex flex-col gap-4 shadow-2xl skew-x-[-2deg] skew-y-[2deg] group-hover:skew-x-0 group-hover:skew-y-0 group-hover:-translate-x-0 sm:group-hover:translate-x-4 transition-all duration-700">
-        <div className="w-8 sm:w-12 h-1 bg-zinc-600/50 rounded-full mb-2 sm:mb-4" />
-        <div className="space-y-3">
-          <div className="h-3 sm:h-4 w-3/4 bg-zinc-700/50 rounded-sm" />
-          <div className="h-2 w-full bg-zinc-700/30 rounded-sm" />
-          <div className="h-2 w-5/6 bg-zinc-700/30 rounded-sm" />
-        </div>
-        <div className="mt-auto self-end w-16 sm:w-24 h-6 sm:h-8 rounded-full border border-zinc-600/50" />
-      </div>
+      <>
+        {/* Background Image Container */}
+        <div 
+          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000 group-hover:scale-110 opacity-70"
+          style={{ backgroundImage: "url('/themis.jpg')" }}
+        />
+        {/* Gradient Overlay to ensure text readability */}
+        <div className="absolute inset-0 z-0 bg-gradient-to-t from-black/90 via-black/60 to-black/20" />
+      </>
     )
   },
   {
