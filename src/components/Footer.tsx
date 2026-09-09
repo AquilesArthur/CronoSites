@@ -23,8 +23,9 @@ export default function Footer() {
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-12 border-b border-gray-100 pb-12 md:pb-16">
           <div className="sm:col-span-2">
-            <Link to="/" className="flex items-center mb-4 md:mb-6">
-              <img src="/logo.png" alt="Crono Logo" className="h-8 md:h-10 w-auto" />
+            <Link to="/" className="text-2xl font-bold tracking-tight text-crono-dark flex items-center gap-2 mb-4 md:mb-6">
+              <div className="w-8 h-8 rounded-lg bg-crono-dark text-crono-light flex items-center justify-center font-bold">C</div>
+              Crono
             </Link>
             <p className="text-gray-500 font-light max-w-xs leading-relaxed">
               Sites profissionais no tempo certo. Elevamos o padrão da sua presença digital.
