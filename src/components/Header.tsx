@@ -1,9 +1,9 @@
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X, ChevronRight } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
-import { cn } from "@/src/lib/utils";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { getWhatsAppLink } from "@/src/config/site";
+import { NextDotFillButton } from "./NextDotFillButton";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,7 +22,6 @@ export default function Header() {
     setIsOpen(false);
   };
 
-  // Prevent background scroll when mobile menu is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -32,61 +31,57 @@ export default function Header() {
   }, [isOpen]);
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 bg-white transition-all duration-300">
-      <div className="container mx-auto px-6 h-16 md:h-20 flex items-center justify-between relative z-10 max-w-7xl">
-        <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="text-xl md:text-2xl font-bold tracking-tight text-crono-dark flex items-center gap-2">
-          <div className="w-7 h-7 md:w-8 md:h-8 rounded-[0.4rem] md:rounded-lg bg-crono-dark text-crono-light flex items-center justify-center font-bold text-sm md:text-base">C</div>
-          Crono
+    <header className="fixed top-6 inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
+      <div className="w-full max-w-4xl bg-black/40 backdrop-blur-xl border border-white/10 rounded-full h-16 flex items-center justify-between px-6 pointer-events-auto shadow-2xl">
+        <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="text-xl font-bold tracking-tight text-white uppercase font-sans">
+          CRONO.
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
-          <button onClick={() => scrollTo('services')} className="hover:text-crono-dark transition-colors">Serviços</button>
-          <button onClick={() => scrollTo('portfolio')} className="hover:text-crono-dark transition-colors">Projetos</button>
-          <button onClick={() => scrollTo('process')} className="hover:text-crono-dark transition-colors">Processo</button>
-          <button onClick={() => scrollTo('solutions')} className="hover:text-crono-dark transition-colors">Soluções</button>
+        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-white/80">
+          <button onClick={() => scrollTo('services')} className="hover:text-crono-accent transition-colors">Serviços</button>
+          <button onClick={() => scrollTo('portfolio')} className="hover:text-crono-accent transition-colors">Projetos</button>
+          <button onClick={() => scrollTo('process')} className="hover:text-crono-accent transition-colors">Processo</button>
         </nav>
 
         <div className="hidden md:flex">
-          <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 rounded-full bg-crono-dark text-white text-sm font-medium hover:bg-black transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(0,0,0,0.1)]">
-            Orçamento
-          </a>
+          <NextDotFillButton label="Orçamento" href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="!h-10 !min-w-[120px] !text-xs !px-6" />
         </div>
 
         {/* Mobile Nav Toggle */}
-        <button className="md:hidden text-crono-dark p-2 -mr-2 active:scale-95 transition-transform" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+        <div className="md:hidden z-[60] flex items-center pr-2">
+          <label className="burger" htmlFor="burger">
+            <input type="checkbox" id="burger" checked={isOpen} onChange={() => setIsOpen(!isOpen)} />
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+        </div>
       </div>
 
       {/* Mobile Nav */}
       <AnimatePresence>
         {isOpen && (
           <motion.div 
-            initial={{ opacity: 0, y: -20 }} 
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className="absolute top-[64px] left-0 w-full h-[calc(100vh-64px)] bg-white border-b shadow-2xl md:hidden overflow-y-auto flex flex-col z-40"
+            initial={{ opacity: 0, y: -20, scale: 0.95 }} 
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -20, scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+            className="absolute top-[72px] left-4 right-4 bg-black/80 backdrop-blur-2xl border border-white/10 rounded-3xl flex flex-col z-40 pointer-events-auto overflow-hidden shadow-2xl"
           >
-            <div className="flex flex-col p-6 gap-2 flex-grow">
-              <button onClick={() => scrollTo('services')} className="text-xl font-medium text-crono-dark py-4 border-b border-gray-100 flex items-center justify-between group active:bg-gray-50 rounded-lg px-2 -mx-2 transition-colors">
-                Serviços <ChevronRight className="w-5 h-5 text-gray-300 group-active:text-crono-dark group-active:translate-x-1 transition-all"/>
+            <div className="flex flex-col flex-grow p-4">
+              <button onClick={() => scrollTo('services')} className="text-lg font-medium text-white py-4 border-b border-white/10 px-4 text-left hover:text-crono-accent transition-colors">
+                Serviços
               </button>
-              <button onClick={() => scrollTo('portfolio')} className="text-xl font-medium text-crono-dark py-4 border-b border-gray-100 flex items-center justify-between group active:bg-gray-50 rounded-lg px-2 -mx-2 transition-colors">
-                Projetos <ChevronRight className="w-5 h-5 text-gray-300 group-active:text-crono-dark group-active:translate-x-1 transition-all"/>
+              <button onClick={() => scrollTo('portfolio')} className="text-lg font-medium text-white py-4 border-b border-white/10 px-4 text-left hover:text-crono-accent transition-colors">
+                Projetos
               </button>
-              <button onClick={() => scrollTo('process')} className="text-xl font-medium text-crono-dark py-4 border-b border-gray-100 flex items-center justify-between group active:bg-gray-50 rounded-lg px-2 -mx-2 transition-colors">
-                Processo <ChevronRight className="w-5 h-5 text-gray-300 group-active:text-crono-dark group-active:translate-x-1 transition-all"/>
-              </button>
-              <button onClick={() => scrollTo('solutions')} className="text-xl font-medium text-crono-dark py-4 border-b border-gray-100 flex items-center justify-between group active:bg-gray-50 rounded-lg px-2 -mx-2 transition-colors">
-                Soluções <ChevronRight className="w-5 h-5 text-gray-300 group-active:text-crono-dark group-active:translate-x-1 transition-all"/>
+              <button onClick={() => scrollTo('process')} className="text-lg font-medium text-white py-4 border-b border-white/10 px-4 text-left hover:text-crono-accent transition-colors">
+                Processo
               </button>
               
-              <div className="mt-8 pt-4 pb-12">
-                <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)} className="w-full text-center px-5 py-4 rounded-full bg-crono-dark text-white text-[17px] font-medium block active:scale-[0.98] transition-transform">
-                  Solicitar Orçamento
-                </a>
+              <div className="p-4 mt-2 text-center">
+                <NextDotFillButton label="Solicitar Orçamento" href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="w-full" onClick={() => setIsOpen(false)} />
               </div>
             </div>
           </motion.div>

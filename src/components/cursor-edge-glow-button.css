@@ -1,0 +1,163 @@
+.edge-light-button,
+.edge-light-button * {
+  box-sizing: border-box;
+}
+.edge-light-button {
+  position: relative;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+}
+.edge-light-button__glow {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(100% + 9px);
+  height: calc(100% + 9px);
+  border: 3px solid transparent;
+  border-radius: 9999px;
+  opacity: 1;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  will-change: transform;
+}
+.edge-light-button__glow--mirrored {
+  opacity: 0;
+  transform: translate(-50%, -50%) scaleX(-1);
+}
+.edge-light-button__outer-glow,
+.edge-light-button__inner-glow {
+  position: absolute;
+  box-sizing: content-box;
+  width: 100%;
+  height: 100%;
+  border-style: solid;
+  border-color: transparent;
+  border-radius: 9999px;
+}
+.edge-light-button__outer-glow {
+  z-index: 20;
+  left: -3px;
+  top: -3px;
+  border-width: 3px;
+  /* Shifted from orange to blue */
+  background: linear-gradient(transparent, transparent) padding-box, linear-gradient(91.88deg, rgba(59, 130, 246, .2) 46.45%, #1D4ED8 98.59%) border-box;
+  filter: blur(15px);
+}
+.edge-light-button__inner-glow {
+  z-index: 10;
+  left: -2px;
+  top: -2px;
+  border-width: 2px;
+  /* Shifted from orange to blue */
+  background: linear-gradient(transparent, transparent) padding-box, linear-gradient(97.68deg, rgba(96, 165, 250, 0) 38.1%, rgba(96, 165, 250, .2) 82.47%, #2563EB 93.3%) border-box;
+  filter: blur(2px);
+}
+.edge-light-button__rim {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 1px solid transparent;
+  border-radius: 9999px;
+  /* Shifted to cool/blue tones */
+  background: linear-gradient(transparent, transparent) padding-box, linear-gradient(103.7deg, rgba(147, 197, 253, .1) 38.66%, rgba(96, 165, 250, .1) 68.55%, #60A5FA 85.01%, #fff 92.12%) border-box;
+}
+.edge-light-button__rim-glow {
+  position: absolute;
+  z-index: 30;
+  left: -2px;
+  top: -2px;
+  box-sizing: content-box;
+  width: 100%;
+  height: 100%;
+  border: 2px solid transparent;
+  border-radius: 9999px;
+  /* Shifted from orange to blue */
+  background: linear-gradient(transparent, transparent) padding-box, linear-gradient(91.96deg, rgba(147, 197, 253, 0) 6.11%, rgba(147, 197, 253, .2) 53.57%, #3B82F6 93.6%) border-box;
+  filter: blur(7px);
+}
+.edge-light-button__control {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, .1);
+  border-radius: 9999px;
+  background: #ffffff;
+  padding: 0 24px;
+  color: #000000;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  line-height: 1;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all .2s cubic-bezier(.4, 0, .2, 1);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+}
+.edge-light-button__light-track {
+  --light-x: 120px;
+  position: absolute;
+  z-index: -10;
+  left: 50%;
+  top: 0;
+  display: flex;
+  width: 204px;
+  height: 100%;
+  margin-left: -102px;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(var(--light-x)) translateZ(0);
+}
+.edge-light-button__light-core {
+  position: absolute;
+  top: 50%;
+  width: 121px;
+  height: 121px;
+  /* Shifted from orange core to white/blue core */
+  background: radial-gradient(50% 50% at 50% 50%, #ffffff 3.5%, #bfdbfe 26.5%, #93c5fd 37.5%, rgba(96, 165, 250, .5) 49%, rgba(37, 99, 235, 0) 92.5%);
+  transform: translateY(-50%);
+}
+.edge-light-button__light-bloom {
+  position: absolute;
+  top: 50%;
+  width: 204px;
+  height: 103px;
+  /* Shifted from orange bloom to white/blue bloom */
+  background: radial-gradient(43.3% 44.23% at 50% 49.51%, #ffffff 29%, #eff6ff 48.5%, #dbeafe 60.71%, rgba(214, 211, 210, 0) 100%);
+  filter: blur(5px);
+  transform: translateY(-50%);
+}
+.edge-light-button__arrow {
+  width: 17px;
+  height: 9px;
+  flex: none;
+  color: #0A66C2;
+}
+.edge-light-button__control:focus-visible {
+  outline: 2px solid #3B82F6;
+  outline-offset: 4px;
+}
+.edge-light-button--icon .edge-light-button__control {
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  border-radius: 50%;
+  color: #000;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+}
+.edge-light-button--icon .edge-light-button__glow,
+.edge-light-button--icon .edge-light-button__outer-glow,
+.edge-light-button--icon .edge-light-button__inner-glow,
+.edge-light-button--icon .edge-light-button__rim,
+.edge-light-button--icon .edge-light-button__rim-glow {
+  border-radius: 50%;
+}

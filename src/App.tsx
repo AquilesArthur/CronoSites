@@ -1,8 +1,3 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
 import { HashRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import Header from "./components/Header";
@@ -15,7 +10,7 @@ export default function App() {
   return (
     <HelmetProvider>
       <HashRouter>
-        <div className="bg-crono-bg min-h-screen text-crono-text font-sans antialiased selection:bg-crono-accent/20 selection:text-crono-dark flex flex-col">
+        <div className="bg-crono-bg min-h-screen text-crono-text font-sans antialiased selection:bg-crono-accent/20 selection:text-crono-accent flex flex-col">
           <Header />
           <div className="flex-grow">
             <Routes>

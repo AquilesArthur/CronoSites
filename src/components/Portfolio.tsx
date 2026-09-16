@@ -1,80 +1,162 @@
-import { motion } from "motion/react";
-import { ArrowUpRight, Maximize2 } from "lucide-react";
-import { portfolioData } from "@/src/data/content";
-import { getWhatsAppLink, siteConfig } from "@/src/config/site";
+import { useState } from "react";
+import { ArrowRight } from "lucide-react";
+import { Carousel } from "./Carousel";
+import { RandomizedText } from "./RandomizedText";
+
+const portfolioItems = [
+  {
+    id: 1,
+    title: "E-commerce de Luxo",
+    desc: "Plataforma focada em alta conversão e estética premium, projetada para reter clientes e maximizar o LTV com velocidade extrema.",
+    category: "Vendas Online",
+    link: "https://exemplo1.com",
+    image: "https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    id: 2,
+    title: "Plataforma SaaS",
+    desc: "Arquitetura escalável para milhares de acessos, com dashboard analítico impecável e interface projetada para minimizar o churn.",
+    category: "Tecnologia",
+    link: "https://exemplo2.com",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    id: 3,
+    title: "Site Institucional",
+    desc: "Posicionamento inquestionável para líderes de mercado. Uma vitrine digital que transmite autoridade e converte atenção em parcerias.",
+    category: "Branding Premium",
+    link: "https://exemplo3.com",
+    image: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    id: 4,
+    title: "Experiência Imersiva",
+    desc: "Apresentando um site que redefine a interação. Uma fusão perfeita de estética e usabilidade 3D.",
+    category: "Corporate",
+    link: "https://exemplo4.com",
+    image: "https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    id: 5,
+    title: "Alta Conversão",
+    desc: "E-commerce focado em velocidade e conversão absoluta. Cada pixel projetado para conduzir o usuário à compra.",
+    category: "Performance",
+    link: "https://exemplo5.com",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop"
+  },
+  {
+    id: 6,
+    title: "Lançamento Futuro",
+    desc: "Um novo case de sucesso absoluto sendo desenhado em nossos laboratórios. Fique de olho nas próximas atualizações.",
+    category: "Em Breve",
+    link: "#",
+    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop"
+  }
+];
+
+export function ProjectButton({ text, href }: { text: string; href: string }) {
+  return (
+    <a 
+      href={href} 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      className="group inline-flex items-center justify-center gap-2 bg-transparent py-2 text-black text-lg font-medium relative transition-colors duration-300"
+    >
+      <span className="relative z-10">{text}</span>
+      
+      {/* Animated Underline */}
+      <span className="absolute bottom-0 left-0 w-full h-[2px] bg-crono-accent scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 ease-out" />
+      
+      {/* Animated Arrow Icon */}
+      <span className="relative grid w-[17px] h-[20px] place-items-center overflow-hidden">
+        {/* Current Arrow (moves out) */}
+        <ArrowRight 
+          className="absolute -rotate-45 transition-all duration-500 ease-[cubic-bezier(.16,1,.3,1)] group-hover:translate-x-[16px] group-hover:-translate-y-[12px] group-hover:text-crono-accent" 
+          size={17} 
+          strokeWidth={2.4} 
+        />
+        {/* Incoming Arrow (moves in) */}
+        <ArrowRight 
+          className="absolute -rotate-45 translate-x-[-16px] translate-y-[12px] transition-all duration-500 ease-[cubic-bezier(.16,1,.3,1)] group-hover:translate-x-0 group-hover:translate-y-0 text-black group-hover:text-crono-accent" 
+          size={17} 
+          strokeWidth={2.4} 
+        />
+      </span>
+    </a>
+  );
+}
 
 export default function Portfolio() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeProject = portfolioItems[activeIndex];
+
   return (
-    <section id="portfolio" className="py-24 md:py-32 bg-white relative">
-      <div className="container mx-auto px-6 max-w-7xl">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-20 gap-6 md:gap-8 text-center md:text-left">
-          <div className="max-w-2xl mx-auto md:mx-0">
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-3xl md:text-5xl font-semibold tracking-tight text-crono-dark mb-4 md:mb-6"
-            >
-              Nossas Estéticas.
-            </motion.h2>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="text-base md:text-lg text-gray-500 font-light leading-relaxed"
-            >
-              Projetamos de acordo com o nível e o sentimento da sua marca. Da sobriedade luxuosa exigida pelo direito à leveza translúcida da área da saúde. Veja alguns exemplos do nosso trabalho.
-            </motion.p>
-          </div>
-          <motion.a 
-            href={getWhatsAppLink()}
-            target="_blank"
-            rel="noopener noreferrer"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center justify-center md:justify-start gap-2 text-sm font-medium hover:text-crono-accent transition-colors py-2"
-          >
-            Discutir seu projeto <ArrowUpRight className="w-4 h-4" />
-          </motion.a>
+    <section id="portfolio" className="w-full bg-[#f8f9fa] relative z-10 border-b border-black/5 overflow-hidden py-24 md:py-32">
+      <div className="max-w-7xl mx-auto px-6 md:px-20">
+        
+        {/* Main Section Title */}
+        <div className="w-full text-center mb-16 md:mb-24">
+          <h2 className="text-4xl md:text-5xl font-bold text-black tracking-tight">
+            Projetos em <span className="text-crono-accent">destaque.</span>
+          </h2>
         </div>
 
-        {/* Bento Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
-          {portfolioData.map((project, idx) => (
-            <motion.a
-              href={project.link || siteConfig.links.portfolioExternal}
-              target="_blank"
-              rel="noopener noreferrer"
-              key={project.category}
-              initial={{ opacity: 0, scale: 0.98 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1, duration: 0.6 }}
-              className={`${project.bgColor} ${project.colSpan} rounded-[1.5rem] md:rounded-[2rem] p-6 sm:p-8 md:p-12 min-h-[320px] md:min-h-[450px] flex flex-col justify-between group overflow-hidden relative border border-black/5 hover:border-black/10 transition-colors cursor-pointer block`}
-            >
-              <div className="relative z-30 flex justify-between items-start">
-                <span className={`text-[11px] sm:text-xs md:text-sm font-semibold tracking-widest uppercase ${project.textColor}`}>
-                  {project.category}
-                </span>
-                <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-black/10 backdrop-blur-md flex items-center justify-center md:opacity-0 group-hover:opacity-100 transform md:translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                  <Maximize2 className={`w-4 h-4 md:w-5 md:h-5 ${project.titleColor}`} />
-                </div>
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-8 w-full max-w-7xl mx-auto pt-8">
+          
+          {/* Left Column: Interactive Carousel */}
+          <div className="w-full lg:w-[60%] flex items-center justify-center relative min-h-[450px] lg:min-h-[800px]">
+            <Carousel 
+              spread={138}
+              depth={100}
+              corner={24}
+              float={15}
+              sink={50}
+              settle={50}
+              items={portfolioItems}
+              onActiveChange={setActiveIndex}
+            />
+          </div>
+
+          {/* Right Column: Dynamic Project Details */}
+          <div className="w-full lg:w-[40%] flex flex-col items-center text-center lg:items-start lg:text-left min-h-[300px] lg:pl-6 xl:pl-10">
+            <div key={`content-${activeProject.id}`} className="flex flex-col items-center lg:items-start w-full bg-white/40 p-8 lg:p-10 rounded-3xl border border-black/5 shadow-[0_8px_30px_rgb(0,0,0,0.02)] backdrop-blur-sm">
+              
+              <div className="mb-6 h-[80px] lg:h-[110px] flex items-center justify-center lg:justify-start w-full">
+                <RandomizedText 
+                  split="words" 
+                  delay={0.02}
+                  className="text-4xl md:text-5xl font-bold tracking-tight text-black"
+                >
+                  {activeProject.title}
+                </RandomizedText>
+              </div>
+
+              <div className="w-full h-px bg-black/10 mb-6" />
+
+              <span className="text-sm font-semibold tracking-widest uppercase text-crono-accent mb-4 block">
+                <RandomizedText split="chars" delay={0.015} className="inline-block text-crono-accent">
+                  {activeProject.category}
+                </RandomizedText>
+              </span>
+              
+              <div className="mb-8 min-h-[100px] flex items-start w-full">
+                <RandomizedText 
+                  split="words" 
+                  delay={0.01}
+                  className="text-lg text-gray-600 font-light leading-relaxed"
+                >
+                  {activeProject.desc}
+                </RandomizedText>
               </div>
               
-              <div className="relative z-30 max-w-[85%] sm:max-w-[70%]">
-                <h3 className={`text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight ${project.titleColor} mb-2`}>
-                  {project.style.split('&')[0]} <br className="hidden md:block"/>
-                  <span className="opacity-80">& {project.style.split('&')[1]}</span>
-                </h3>
+              <div className="mt-4 flex justify-center lg:justify-start w-full">
+                <ProjectButton text="Explorar Projeto" href={activeProject.link} />
               </div>
-              
-              {/* Specialized Abstract Element */}
-              {project.element}
-            </motion.a>
-          ))}
+            </div>
+          </div>
+          
         </div>
+
       </div>
     </section>
   );

@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { Instagram, Mail, Phone } from "lucide-react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { getWhatsAppLink, siteConfig } from "@/src/config/site";
@@ -19,57 +18,61 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-white pt-16 md:pt-20 pb-10 border-t border-gray-100">
+    <footer className="bg-crono-bg text-white">
       <div className="container mx-auto px-6 max-w-7xl">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-12 border-b border-gray-100 pb-12 md:pb-16">
-          <div className="sm:col-span-2">
-            <Link to="/" className="text-2xl font-bold tracking-tight text-crono-dark flex items-center gap-2 mb-4 md:mb-6">
-              <div className="w-8 h-8 rounded-lg bg-crono-dark text-crono-light flex items-center justify-center font-bold">C</div>
-              Crono
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-0 border-l-grid border-r-grid border-b-grid">
+          
+          <div className="p-10 border-b-grid md:border-b-0 md:border-r-grid col-span-1 md:col-span-2">
+            <Link to="/" className="text-4xl font-bold tracking-tighter text-white uppercase mb-6 block">
+              CRONO.
             </Link>
-            <p className="text-gray-500 font-light max-w-xs leading-relaxed">
-              Sites profissionais no tempo certo. Elevamos o padrão da sua presença digital.
+            <p className="text-gray-400 font-medium max-w-sm text-lg">
+              Estética funcional. Código robusto.
             </p>
           </div>
           
-          <div>
-            <h4 className="text-sm font-semibold tracking-widest text-crono-dark uppercase mb-4 md:mb-6">Contato</h4>
-            <ul className="space-y-3 md:space-y-4">
-              <li>
-                <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-500 hover:text-crono-accent transition-colors">
-                  <Phone className="w-4 h-4" /> {siteConfig.contact.phone}
-                </a>
-              </li>
-              <li>
-                <a href={`mailto:${siteConfig.contact.email}`} className="flex items-center gap-2 text-gray-500 hover:text-crono-accent transition-colors">
-                  <Mail className="w-4 h-4" /> {siteConfig.contact.email}
-                </a>
-              </li>
-              <li>
-                <a href={`https://instagram.com/${siteConfig.contact.instagram.replace('@', '')}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-500 hover:text-crono-accent transition-colors">
-                  <Instagram className="w-4 h-4" /> {siteConfig.contact.instagram}
-                </a>
-              </li>
-            </ul>
+          <div className="p-10 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between">
+            <div>
+              <h4 className="text-sm font-bold tracking-widest text-gray-500 uppercase mb-6">Contato</h4>
+              <ul className="space-y-4">
+                <li>
+                  <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white hover:text-crono-accent font-medium transition-colors">
+                    <Phone className="w-4 h-4" /> {siteConfig.contact.phone}
+                  </a>
+                </li>
+                <li>
+                  <a href={`mailto:${siteConfig.contact.email}`} className="flex items-center gap-2 text-white hover:text-crono-accent font-medium transition-colors">
+                    <Mail className="w-4 h-4" /> {siteConfig.contact.email}
+                  </a>
+                </li>
+                <li>
+                  <a href={`https://instagram.com/${siteConfig.contact.instagram.replace('@', '')}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white hover:text-crono-accent font-medium transition-colors">
+                    <Instagram className="w-4 h-4" /> {siteConfig.contact.instagram}
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
           
-          <div>
-            <h4 className="text-sm font-semibold tracking-widest text-crono-dark uppercase mb-4 md:mb-6">Navegação</h4>
-            <ul className="space-y-3 md:space-y-4">
-              <li><button onClick={() => scrollTo('services')} className="text-gray-500 hover:text-crono-dark transition-colors">Serviços</button></li>
-              <li><button onClick={() => scrollTo('portfolio')} className="text-gray-500 hover:text-crono-dark transition-colors">Projetos</button></li>
-              <li><button onClick={() => scrollTo('pricing')} className="text-gray-500 hover:text-crono-dark transition-colors">Planos</button></li>
-            </ul>
+          <div className="p-10 flex flex-col justify-between">
+            <div>
+              <h4 className="text-sm font-bold tracking-widest text-gray-500 uppercase mb-6">Nav</h4>
+              <ul className="space-y-4 font-medium">
+                <li><button onClick={() => scrollTo('services')} className="text-white hover:text-crono-accent transition-colors uppercase tracking-widest text-sm font-bold">Serviços</button></li>
+                <li><button onClick={() => scrollTo('portfolio')} className="text-white hover:text-crono-accent transition-colors uppercase tracking-widest text-sm font-bold">Projetos</button></li>
+              </ul>
+            </div>
           </div>
+
         </div>
         
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
-          <p className="text-gray-400 text-sm">
-            © {new Date().getFullYear()} Crono. Todos os direitos reservados.
+        <div className="py-8 flex flex-col md:flex-row items-center justify-between gap-4 border-l-grid border-r-grid border-b-grid px-10">
+          <p className="text-gray-500 text-sm font-medium">
+            © {new Date().getFullYear()} CRONO. Todos os direitos reservados.
           </p>
-          <div className="flex gap-6 text-sm text-gray-400">
-            <Link to="/privacidade" className="hover:text-crono-dark transition-colors">Privacidade</Link>
-            <Link to="/termos" className="hover:text-crono-dark transition-colors">Termos</Link>
+          <div className="flex gap-6 text-sm text-gray-500 font-medium">
+            <Link to="/privacidade" className="hover:text-white transition-colors">Privacidade</Link>
+            <Link to="/termos" className="hover:text-white transition-colors">Termos</Link>
           </div>
         </div>
       </div>
