@@ -104,7 +104,7 @@ export default function Portfolio() {
         <div className="flex flex-col xl:flex-row items-center justify-center gap-6 xl:gap-0 w-full max-w-[1400px] mx-auto pt-4 md:pt-12">
           
           {/* Left Column: Interactive Carousel */}
-          <div className="w-full xl:w-[55%] flex items-center justify-center relative min-h-[400px] md:min-h-[500px] xl:min-h-[700px] z-40 py-0">
+          <div className="w-full xl:w-[55%] flex items-center justify-center relative min-h-[400px] md:min-h-[500px] xl:min-h-[600px] z-40 py-0">
             <Carousel 
               orbit={450}
               depth={150}

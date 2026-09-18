@@ -14,7 +14,7 @@ const CARD_W = 480;
 const CARD_H = 660;
 
 const STAGE_W = 1400;
-const STAGE_H = 800;
+const STAGE_H = 600;
 
 const ORBIT = 300;
 const DEPTH = 120;

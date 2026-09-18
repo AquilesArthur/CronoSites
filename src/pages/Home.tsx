@@ -25,7 +25,7 @@ export default function Home() {
   return (
     <main className="bg-crono-bg overflow-hidden w-full">
       <Helmet>
-        <title>Crono | Digital Craft</title>
+        <title>Crono Sites</title>
         <meta name="description" content="Nós projetamos e desenvolvemos plataformas brutais e altamente performáticas para quem busca liderança." />
       </Helmet>
       <Hero />

@@ -1,4 +1,4 @@
-# Crono Sites - Digital Craft
+# Crono Sites
 
 Este é o repositório do site oficial da Crono, construído com React, Tailwind CSS e Framer Motion para experiências interativas 3D.
 
