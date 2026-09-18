@@ -104,10 +104,10 @@ export default function Portfolio() {
         <div className="flex flex-col xl:flex-row items-center justify-center gap-6 xl:gap-0 w-full max-w-[1400px] mx-auto pt-4 md:pt-12">
           
           {/* Left Column: Interactive Carousel */}
-          <div className="w-full xl:w-[55%] flex items-center justify-center relative min-h-[250px] xl:min-h-[700px] z-40 py-0">
+          <div className="w-full xl:w-[55%] flex items-center justify-center relative min-h-[400px] md:min-h-[500px] xl:min-h-[700px] z-40 py-0">
             <Carousel 
-              spread={138}
-              depth={100}
+              orbit={450}
+              depth={150}
               corner={24}
               float={15}
               sink={50}
@@ -118,10 +118,10 @@ export default function Portfolio() {
           </div>
 
           {/* Right Column: Dynamic Project Details */}
-          <div className="w-full max-w-2xl xl:max-w-none xl:w-[45%] flex flex-col items-center text-center xl:items-start xl:text-left min-h-[300px] px-4 md:px-8 xl:px-0 xl:pr-12 relative z-30">
+          <div className="w-full max-w-2xl xl:max-w-none xl:w-[45%] flex flex-col items-center text-center xl:items-start xl:text-left min-h-[300px] px-4 md:px-8 xl:pl-10 xl:pr-4 relative z-30">
             <div key={`content-${activeProject.id}`} className="flex flex-col items-center xl:items-start w-full bg-white/40 p-8 xl:p-10 rounded-3xl border border-black/5 shadow-[0_8px_30px_rgb(0,0,0,0.02)] backdrop-blur-sm xl:mt-0">
               
-              <div className="mb-4 xl:mb-6 h-[80px] xl:h-[110px] flex items-center justify-center xl:justify-start w-full">
+              <div className="mb-4 xl:mb-6 min-h-[80px] xl:min-h-[110px] flex items-center justify-center xl:justify-start w-full">
                 <RandomizedText 
                   split="words" 
                   delay={0.02}

@@ -13,8 +13,8 @@ const mix = (a: number, b: number, t: number) => a + (b - a) * t;
 const CARD_W = 480;
 const CARD_H = 660;
 
-const STAGE_W = 1000;
-const STAGE_H = 750;
+const STAGE_W = 1400;
+const STAGE_H = 800;
 
 const ORBIT = 300;
 const DEPTH = 120;
@@ -138,16 +138,17 @@ export function Carousel({
       let availableWidth = window.innerWidth;
       
       if (isMobile) {
-        // On mobile, it takes full width minus section padding (px-6 is 24px * 2 = 48px)
-        availableWidth = window.innerWidth - 48;
+        // On mobile, let the carousel bleed off the edges a bit so the center card is readable
+        // We set the availableWidth wider than the screen to scale it up
+        availableWidth = window.innerWidth * 1.6;
       } else {
-        // On desktop, it takes 55% of the max-1400px container
+        // On desktop, it takes 55% of the max-1400px container minus a healthy gap
         const containerWidth = Math.min(window.innerWidth, 1400);
-        availableWidth = containerWidth * 0.55;
+        availableWidth = (containerWidth * 0.55) - 60; // Safe area
       }
       
-      // Scale down if parent is smaller, but also allow scaling up slightly if we have tons of room
-      setScale(Math.min(1.05, availableWidth / STAGE_W));
+      // Scale down if parent is smaller
+      setScale(availableWidth / STAGE_W);
     };
     
     updateScale();
@@ -291,7 +292,7 @@ export function Carousel({
         {/* Navigation Arrows for Desktop - Hovering over the side cards to save space and keep scale large */}
         <button 
           onClick={() => go(-1)} 
-          className="absolute left-0 md:left-2 lg:left-6 top-1/2 -translate-y-1/2 z-40 p-4 md:p-5 rounded-full bg-white/80 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-black/5 text-black transition-all duration-300 hidden md:flex items-center justify-center pointer-events-auto group/left hover:scale-110 hover:shadow-[0_10px_40px_rgba(16, 185, 129,0.2)] hover:border-crono-accent/20 overflow-hidden"
+          className="absolute left-0 md:left-2 lg:left-6 top-1/2 -translate-y-1/2 z-40 p-4 md:p-5 rounded-full bg-white/80 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-black/5 text-black transition-all duration-300 hidden md:flex items-center justify-center pointer-events-auto group/left hover:scale-110 hover:shadow-[0_10px_40px_rgba(10,102,194,0.2)] hover:border-crono-accent/20 overflow-hidden"
           aria-label="Projeto anterior"
         >
           <span className="relative grid w-[24px] h-[24px] place-items-center">
@@ -301,7 +302,7 @@ export function Carousel({
 
         <button 
           onClick={() => go(1)} 
-          className="absolute right-0 md:right-2 lg:right-6 top-1/2 -translate-y-1/2 z-40 p-4 md:p-5 rounded-full bg-white/80 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-black/5 text-black transition-all duration-300 hidden md:flex items-center justify-center pointer-events-auto group/right hover:scale-110 hover:shadow-[0_10px_40px_rgba(16, 185, 129,0.2)] hover:border-crono-accent/20 overflow-hidden"
+          className="absolute right-0 md:right-2 lg:right-6 top-1/2 -translate-y-1/2 z-40 p-4 md:p-5 rounded-full bg-white/80 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-black/5 text-black transition-all duration-300 hidden md:flex items-center justify-center pointer-events-auto group/right hover:scale-110 hover:shadow-[0_10px_40px_rgba(10,102,194,0.2)] hover:border-crono-accent/20 overflow-hidden"
           aria-label="Próximo projeto"
         >
           <span className="relative grid w-[24px] h-[24px] place-items-center">

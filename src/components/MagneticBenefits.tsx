@@ -17,7 +17,7 @@ const items = [
 const gradientConfig = {
   preset: "custom",
   color1: "#000000",
-  color2: "#001a11",
+  color2: "#001a0a",
   color3: "#10B981",
   rotation: 45,
   speed: 10,
@@ -29,7 +29,7 @@ export function MagneticBenefits() {
   const selected = items[selectedIndex];
 
   return (
-    <div id="benefits" className="relative w-full flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-32 py-32 md:py-40 min-h-[600px] px-6 overflow-hidden bg-[#000d07]">
+    <div id="benefits" className="relative w-full flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-32 py-32 md:py-40 min-h-[600px] px-6 overflow-hidden bg-[#001105]">
       
       {/* Background Animated Gradient */}
       <AnimatedGradient 
