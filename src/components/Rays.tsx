@@ -26,12 +26,12 @@ export function Rays({ backgroundColor = "var(--color-crono-bg)", className, sty
         }}
         style={{
           background: `conic-gradient(from 90deg at 50% -10%, 
-            rgba(0, 85, 255, 0.15) 0%, transparent 5%, 
-            rgba(0, 85, 255, 0.4) 10%, transparent 15%, 
-            rgba(0, 85, 255, 0.2) 20%, transparent 25%, 
-            rgba(0, 85, 255, 0.5) 30%, transparent 35%, 
-            rgba(0, 85, 255, 0.15) 40%, transparent 45%,
-            rgba(0, 85, 255, 0.3) 48%, transparent 50%,
+            rgba(16, 185, 129, 0.15) 0%, transparent 5%, 
+            rgba(16, 185, 129, 0.4) 10%, transparent 15%, 
+            rgba(16, 185, 129, 0.2) 20%, transparent 25%, 
+            rgba(16, 185, 129, 0.5) 30%, transparent 35%, 
+            rgba(16, 185, 129, 0.15) 40%, transparent 45%,
+            rgba(16, 185, 129, 0.3) 48%, transparent 50%,
             transparent 100%
           )`,
           maskImage: 'radial-gradient(ellipse at 50% 0%, black 10%, transparent 70%)',
@@ -51,11 +51,11 @@ export function Rays({ backgroundColor = "var(--color-crono-bg)", className, sty
         style={{
           background: `conic-gradient(from 90deg at 50% -10%, 
             transparent 2%, 
-            rgba(0, 85, 255, 0.3) 7%, transparent 12%, 
-            rgba(0, 85, 255, 0.5) 17%, transparent 22%, 
-            rgba(0, 85, 255, 0.15) 27%, transparent 32%, 
-            rgba(0, 85, 255, 0.4) 37%, transparent 42%,
-            rgba(0, 85, 255, 0.2) 47%, transparent 50%,
+            rgba(16, 185, 129, 0.3) 7%, transparent 12%, 
+            rgba(16, 185, 129, 0.5) 17%, transparent 22%, 
+            rgba(16, 185, 129, 0.15) 27%, transparent 32%, 
+            rgba(16, 185, 129, 0.4) 37%, transparent 42%,
+            rgba(16, 185, 129, 0.2) 47%, transparent 50%,
             transparent 100%
           )`,
           maskImage: 'radial-gradient(ellipse at 50% 0%, black 10%, transparent 70%)',
@@ -66,7 +66,7 @@ export function Rays({ backgroundColor = "var(--color-crono-bg)", className, sty
       {/* Central glowing orb at the absolute top */}
       <motion.div 
         className="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[80%] max-w-[1000px] h-[400px] rounded-[100%] blur-[120px]"
-        style={{ backgroundColor: "rgba(0, 85, 255, 0.35)" }}
+        style={{ backgroundColor: "rgba(16, 185, 129, 0.35)" }}
         animate={{
           opacity: [0.4, 0.7, 0.4],
           scale: [0.95, 1.05, 0.95],

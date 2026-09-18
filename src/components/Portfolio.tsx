@@ -95,16 +95,16 @@ export default function Portfolio() {
       <div className="max-w-7xl mx-auto px-6 md:px-20">
         
         {/* Main Section Title */}
-        <div className="w-full text-center mb-16 md:mb-24">
+        <div className="w-full text-center mb-10 md:mb-24">
           <h2 className="text-4xl md:text-5xl font-bold text-black tracking-tight">
             Projetos em <span className="text-crono-accent">destaque.</span>
           </h2>
         </div>
 
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-8 w-full max-w-7xl mx-auto pt-8">
+        <div className="flex flex-col xl:flex-row items-center justify-center gap-6 xl:gap-0 w-full max-w-[1400px] mx-auto pt-4 md:pt-12">
           
           {/* Left Column: Interactive Carousel */}
-          <div className="w-full lg:w-[60%] flex items-center justify-center relative min-h-[450px] lg:min-h-[800px]">
+          <div className="w-full xl:w-[55%] flex items-center justify-center relative min-h-[250px] xl:min-h-[700px] z-40 py-0">
             <Carousel 
               spread={138}
               depth={100}
@@ -118,14 +118,14 @@ export default function Portfolio() {
           </div>
 
           {/* Right Column: Dynamic Project Details */}
-          <div className="w-full lg:w-[40%] flex flex-col items-center text-center lg:items-start lg:text-left min-h-[300px] lg:pl-6 xl:pl-10">
-            <div key={`content-${activeProject.id}`} className="flex flex-col items-center lg:items-start w-full bg-white/40 p-8 lg:p-10 rounded-3xl border border-black/5 shadow-[0_8px_30px_rgb(0,0,0,0.02)] backdrop-blur-sm">
+          <div className="w-full max-w-2xl xl:max-w-none xl:w-[45%] flex flex-col items-center text-center xl:items-start xl:text-left min-h-[300px] px-4 md:px-8 xl:px-0 xl:pr-12 relative z-30">
+            <div key={`content-${activeProject.id}`} className="flex flex-col items-center xl:items-start w-full bg-white/40 p-8 xl:p-10 rounded-3xl border border-black/5 shadow-[0_8px_30px_rgb(0,0,0,0.02)] backdrop-blur-sm xl:mt-0">
               
-              <div className="mb-6 h-[80px] lg:h-[110px] flex items-center justify-center lg:justify-start w-full">
+              <div className="mb-4 xl:mb-6 h-[80px] xl:h-[110px] flex items-center justify-center xl:justify-start w-full">
                 <RandomizedText 
                   split="words" 
                   delay={0.02}
-                  className="text-4xl md:text-5xl font-bold tracking-tight text-black"
+                  className="text-4xl md:text-5xl font-bold tracking-tight text-black text-center xl:text-left font-heading"
                 >
                   {activeProject.title}
                 </RandomizedText>
@@ -133,23 +133,23 @@ export default function Portfolio() {
 
               <div className="w-full h-px bg-black/10 mb-6" />
 
-              <span className="text-sm font-semibold tracking-widest uppercase text-crono-accent mb-4 block">
+              <span className="text-sm font-semibold tracking-widest uppercase text-crono-accent mb-4 block text-center xl:text-left w-full">
                 <RandomizedText split="chars" delay={0.015} className="inline-block text-crono-accent">
                   {activeProject.category}
                 </RandomizedText>
               </span>
               
-              <div className="mb-8 min-h-[100px] flex items-start w-full">
+              <div className="mb-8 min-h-[100px] flex items-start justify-center xl:justify-start w-full">
                 <RandomizedText 
                   split="words" 
                   delay={0.01}
-                  className="text-lg text-gray-600 font-light leading-relaxed"
+                  className="text-lg text-gray-600 font-light leading-relaxed text-center xl:text-left"
                 >
                   {activeProject.desc}
                 </RandomizedText>
               </div>
               
-              <div className="mt-4 flex justify-center lg:justify-start w-full">
+              <div className="mt-4 flex justify-center xl:justify-start w-full">
                 <ProjectButton text="Explorar Projeto" href={activeProject.link} />
               </div>
             </div>

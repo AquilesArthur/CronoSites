@@ -20,10 +20,10 @@ export default function Footer() {
   return (
     <footer className="bg-crono-bg text-white">
       <div className="container mx-auto px-6 max-w-7xl">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-0 border-l-grid border-r-grid border-b-grid">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border-l-grid border-r-grid border-b-grid">
           
           <div className="p-10 border-b-grid md:border-b-0 md:border-r-grid col-span-1 md:col-span-2">
-            <Link to="/" className="text-4xl font-bold tracking-tighter text-white uppercase mb-6 block">
+            <Link to="/" className="text-4xl font-bold tracking-tighter text-white uppercase mb-6 block font-display">
               CRONO.
             </Link>
             <p className="text-gray-400 font-medium max-w-sm text-lg">
@@ -31,9 +31,9 @@ export default function Footer() {
             </p>
           </div>
           
-          <div className="p-10 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between">
+          <div className="p-10 flex flex-col justify-between col-span-1">
             <div>
-              <h4 className="text-sm font-bold tracking-widest text-gray-500 uppercase mb-6">Contato</h4>
+              <h4 className="text-sm font-bold tracking-widest text-gray-500 uppercase mb-6 font-heading">Contato</h4>
               <ul className="space-y-4">
                 <li>
                   <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white hover:text-crono-accent font-medium transition-colors">
@@ -50,16 +50,6 @@ export default function Footer() {
                     <Instagram className="w-4 h-4" /> {siteConfig.contact.instagram}
                   </a>
                 </li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="p-10 flex flex-col justify-between">
-            <div>
-              <h4 className="text-sm font-bold tracking-widest text-gray-500 uppercase mb-6">Nav</h4>
-              <ul className="space-y-4 font-medium">
-                <li><button onClick={() => scrollTo('services')} className="text-white hover:text-crono-accent transition-colors uppercase tracking-widest text-sm font-bold">Serviços</button></li>
-                <li><button onClick={() => scrollTo('portfolio')} className="text-white hover:text-crono-accent transition-colors uppercase tracking-widest text-sm font-bold">Projetos</button></li>
               </ul>
             </div>
           </div>

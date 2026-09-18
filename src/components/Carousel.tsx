@@ -130,24 +130,26 @@ export function Carousel({
   const N = items.length;
 
   const containerRef = useRef<HTMLDivElement>(null);
-  const [scale, setScale] = useState(1);
+  const [scale, setScale] = useState(0); // Initialize to 0 to prevent a 1000px flash on mount
 
   useLayoutEffect(() => {
     const updateScale = () => {
-      if (containerRef.current) {
-        const parentWidth = containerRef.current.parentElement?.offsetWidth || window.innerWidth;
-        // Reduce padding deduction on desktop to allow the carousel to grow to its maximum scale
-        const isMobile = window.innerWidth < 768;
-        const padding = isMobile ? 32 : 0; 
-        const availableWidth = parentWidth - padding;
-        
-        if (availableWidth < STAGE_W) {
-          setScale(availableWidth / STAGE_W);
-        } else {
-          setScale(1);
-        }
+      const isMobile = window.innerWidth < 1280; // xl breakpoint
+      let availableWidth = window.innerWidth;
+      
+      if (isMobile) {
+        // On mobile, it takes full width minus section padding (px-6 is 24px * 2 = 48px)
+        availableWidth = window.innerWidth - 48;
+      } else {
+        // On desktop, it takes 55% of the max-1400px container
+        const containerWidth = Math.min(window.innerWidth, 1400);
+        availableWidth = containerWidth * 0.55;
       }
+      
+      // Scale down if parent is smaller, but also allow scaling up slightly if we have tons of room
+      setScale(Math.min(1.05, availableWidth / STAGE_W));
     };
+    
     updateScale();
     window.addEventListener("resize", updateScale);
     return () => window.removeEventListener("resize", updateScale);
@@ -284,35 +286,33 @@ export function Carousel({
     <div className="relative w-full flex items-center justify-center group" ref={containerRef}>
       
       {/* Wrapper that is exactly STAGE_W wide (scaled), keeps arrows relative to the content block */}
-      <div className="relative flex items-center justify-center mx-auto" style={{ width: STAGE_W * scale, height: STAGE_H * scale }}>
+      <div className="relative flex items-center justify-center mx-auto overflow-visible" style={{ width: STAGE_W * scale, height: STAGE_H * scale, maxWidth: '100%' }}>
         
         {/* Navigation Arrows for Desktop - Hovering over the side cards to save space and keep scale large */}
         <button 
           onClick={() => go(-1)} 
-          className="absolute left-0 md:left-2 lg:left-6 top-1/2 -translate-y-1/2 z-40 p-4 md:p-5 rounded-full bg-white/80 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-black/5 text-black transition-all duration-300 hidden md:flex items-center justify-center pointer-events-auto group/left hover:border-crono-accent/40 hover:bg-white overflow-hidden"
+          className="absolute left-0 md:left-2 lg:left-6 top-1/2 -translate-y-1/2 z-40 p-4 md:p-5 rounded-full bg-white/80 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-black/5 text-black transition-all duration-300 hidden md:flex items-center justify-center pointer-events-auto group/left hover:scale-110 hover:shadow-[0_10px_40px_rgba(16, 185, 129,0.2)] hover:border-crono-accent/20 overflow-hidden"
           aria-label="Projeto anterior"
         >
           <span className="relative grid w-[24px] h-[24px] place-items-center">
-            <ChevronLeft className="absolute transition-all duration-500 ease-[cubic-bezier(.16,1,.3,1)] group-hover/left:-translate-x-[24px] group-hover/left:opacity-0" size={24} />
-            <ChevronLeft className="absolute translate-x-[24px] opacity-0 transition-all duration-500 ease-[cubic-bezier(.16,1,.3,1)] group-hover/left:translate-x-0 group-hover/left:opacity-1 text-crono-accent" size={24} />
+            <ChevronLeft className="transition-all duration-300 ease-out group-hover/left:-translate-x-[2px] group-hover/left:text-crono-accent" size={24} />
           </span>
         </button>
 
         <button 
           onClick={() => go(1)} 
-          className="absolute right-0 md:right-2 lg:right-6 top-1/2 -translate-y-1/2 z-40 p-4 md:p-5 rounded-full bg-white/80 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-black/5 text-black transition-all duration-300 hidden md:flex items-center justify-center pointer-events-auto group/right hover:border-crono-accent/40 hover:bg-white overflow-hidden"
+          className="absolute right-0 md:right-2 lg:right-6 top-1/2 -translate-y-1/2 z-40 p-4 md:p-5 rounded-full bg-white/80 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-black/5 text-black transition-all duration-300 hidden md:flex items-center justify-center pointer-events-auto group/right hover:scale-110 hover:shadow-[0_10px_40px_rgba(16, 185, 129,0.2)] hover:border-crono-accent/20 overflow-hidden"
           aria-label="Próximo projeto"
         >
           <span className="relative grid w-[24px] h-[24px] place-items-center">
-            <ChevronRight className="absolute transition-all duration-500 ease-[cubic-bezier(.16,1,.3,1)] group-hover/right:translate-x-[24px] group-hover/right:opacity-0" size={24} />
-            <ChevronRight className="absolute -translate-x-[24px] opacity-0 transition-all duration-500 ease-[cubic-bezier(.16,1,.3,1)] group-hover/right:translate-x-0 group-hover/right:opacity-1 text-crono-accent" size={24} />
+            <ChevronRight className="transition-all duration-300 ease-out group-hover/right:translate-x-[2px] group-hover/right:text-crono-accent" size={24} />
           </span>
         </button>
 
-        {/* Scaled 3D Stage - shifted down to vertically center with the arrows */}
+        {/* Scaled 3D Stage - perfectly centered within its wrapper */}
         <div 
-          className="car absolute top-[68%] left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-auto" 
-          style={{ width: STAGE_W, height: STAGE_H, transform: `scale(${scale})` }}
+          className="car absolute top-1/2 left-1/2 pointer-events-auto" 
+          style={{ width: STAGE_W, height: STAGE_H, transform: `translate(-50%, -50%) scale(${scale})` }}
         >
           <div
             className="car-track"
@@ -416,7 +416,7 @@ function Card({ shot, corner, sink, off }: { shot: string; corner: number; sink:
         aria-hidden="true"
         style={{
           borderRadius: corner,
-          backgroundImage: `radial-gradient(44% 36% at ${px.toFixed(1)}% ${py.toFixed(1)}%, rgba(9, 14, 28, ${dark.toFixed(3)}) 0%, rgba(9, 14, 28, 0) 100%), radial-gradient(54% 44% at ${(100 - px).toFixed(1)}% ${(100 - py).toFixed(1)}%, rgba(255, 255, 255, ${rim.toFixed(3)}) 0%, rgba(255, 255, 255, 0) 100%)`,
+          backgroundImage: `radial-gradient(60% 60% at ${px.toFixed(1)}% ${py.toFixed(1)}%, rgba(255, 255, 255, ${(dark * 0.7).toFixed(3)}) 0%, rgba(255, 255, 255, 0) 100%), radial-gradient(54% 44% at ${(100 - px).toFixed(1)}% ${(100 - py).toFixed(1)}%, rgba(255, 255, 255, ${rim.toFixed(3)}) 0%, rgba(255, 255, 255, 0) 100%)`,
         }}
       />
     </div>

@@ -33,14 +33,15 @@ export default function Header() {
   return (
     <header className="fixed top-6 inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
       <div className="w-full max-w-4xl bg-black/40 backdrop-blur-xl border border-white/10 rounded-full h-16 flex items-center justify-between px-6 pointer-events-auto shadow-2xl">
-        <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="text-xl font-bold tracking-tight text-white uppercase font-sans">
+        <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="text-xl font-bold tracking-tight text-white uppercase font-display">
           CRONO.
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-white/80">
-          <button onClick={() => scrollTo('services')} className="hover:text-crono-accent transition-colors">Serviços</button>
+        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-white/80 font-heading">
           <button onClick={() => scrollTo('portfolio')} className="hover:text-crono-accent transition-colors">Projetos</button>
+          <button onClick={() => scrollTo('benefits')} className="hover:text-crono-accent transition-colors">Benefícios</button>
+          <button onClick={() => scrollTo('services')} className="hover:text-crono-accent transition-colors">Serviços</button>
           <button onClick={() => scrollTo('process')} className="hover:text-crono-accent transition-colors">Processo</button>
         </nav>
 
@@ -69,12 +70,15 @@ export default function Header() {
             transition={{ duration: 0.2 }}
             className="absolute top-[72px] left-4 right-4 bg-black/80 backdrop-blur-2xl border border-white/10 rounded-3xl flex flex-col z-40 pointer-events-auto overflow-hidden shadow-2xl"
           >
-            <div className="flex flex-col flex-grow p-4">
-              <button onClick={() => scrollTo('services')} className="text-lg font-medium text-white py-4 border-b border-white/10 px-4 text-left hover:text-crono-accent transition-colors">
-                Serviços
-              </button>
+            <div className="flex flex-col flex-grow p-4 font-heading">
               <button onClick={() => scrollTo('portfolio')} className="text-lg font-medium text-white py-4 border-b border-white/10 px-4 text-left hover:text-crono-accent transition-colors">
                 Projetos
+              </button>
+              <button onClick={() => scrollTo('benefits')} className="text-lg font-medium text-white py-4 border-b border-white/10 px-4 text-left hover:text-crono-accent transition-colors">
+                Benefícios
+              </button>
+              <button onClick={() => scrollTo('services')} className="text-lg font-medium text-white py-4 border-b border-white/10 px-4 text-left hover:text-crono-accent transition-colors">
+                Serviços
               </button>
               <button onClick={() => scrollTo('process')} className="text-lg font-medium text-white py-4 border-b border-white/10 px-4 text-left hover:text-crono-accent transition-colors">
                 Processo

@@ -44,7 +44,7 @@ export default function Home() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
-            className="text-3xl md:text-5xl font-medium tracking-tight text-white/90 leading-tight justify-center items-center text-center flex flex-wrap max-w-4xl"
+            className="text-3xl md:text-5xl font-bold tracking-tight text-white/90 leading-tight justify-center items-center text-center flex flex-wrap max-w-4xl font-display"
           >
             {renderWords("Convertemos ")}
             <motion.span variants={staggerItem} className="mr-[0.25em] inline-block">
