@@ -14,7 +14,7 @@ const items = [
   { id: '6', title: "Premium", desc: "Estética refinada e interações imersivas para um posicionamento inquestionável no mercado líder.", icon: GemIcon },
 ];
 
-const gradientConfig = {
+const gradientConfig: any = {
   preset: "custom",
   color1: "#000000",
   color2: "#001a0a",

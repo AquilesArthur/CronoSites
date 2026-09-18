@@ -8,7 +8,7 @@ import FinalCTA from "../components/FinalCTA";
 import { MagneticBenefits } from "../components/MagneticBenefits";
 import { HighlightedText } from "../components/HighlightedText";
 
-const staggerItem = {
+const staggerItem: any = {
   hidden: { opacity: 0, y: 15 },
   show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 250, damping: 25 } }
 };

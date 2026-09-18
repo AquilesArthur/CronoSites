@@ -213,7 +213,7 @@ export default function AnimatedGradient({
   const startTimeRef = useRef<number>(0);
 
   const [isMounted, setIsMounted] = useState(false);
-  const resolvedTheme = "dark"; // Default to dark for this component to prevent issues
+  const resolvedTheme: string = "dark"; // Default to dark for this component to prevent issues
 
   useEffect(() => {
     setIsMounted(true);
